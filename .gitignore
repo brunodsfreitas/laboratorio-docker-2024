@@ -1,0 +1,3 @@
+*.code-workspace
+wordpress/db_data
+wordpress/wordpress_data
