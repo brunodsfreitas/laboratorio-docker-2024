@@ -1,0 +1,26 @@
+FROM ubuntu:latest
+RUN mkdir /app
+COPY ./frp_data/frps /app
+COPY ./frp_data/frpc /app
+COPY ./frp_data/frps.toml /app
+COPY ./frp_data/frpc.toml /app
+
+# Atualize a lista de pacotes e instale o servidor SSH
+RUN apt-get update \
+    && apt-get install -y openssh-server \
+    && rm -rf /var/lib/apt/lists/*
+# Criar o usuário "bruno" com senha (substitua "senha_bruno" pela senha desejada)
+RUN useradd -m -s /bin/bash bruno \
+    && echo 'bruno:senhaAa' | chpasswd
+# Adicionar o usuário "bruno" ao grupo sudo para permissões administrativas (opcional)
+RUN usermod -aG sudo bruno
+
+RUN mkdir /var/run/sshd
+
+RUN cd /app
+EXPOSE 8085
+EXPOSE 8086
+EXPOSE 22
+
+# Iniciar o serviço SSH ao iniciar o contêiner
+CMD ["/bin/bash", "-c", "/usr/sbin/sshd -D && /app/frpc -c /app/frpc.toml"]

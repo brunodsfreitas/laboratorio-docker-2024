@@ -1,0 +1,41 @@
+services:
+#https://github.com/fatedier/frp#accessing-internal-web-services-with-custom-domains-in-lan
+  frp-server:
+    image: frps:1.0
+    volumes:
+      - .\frp_data:/tmp/data
+    ports:
+      - 8443:8443
+      - 8085:8085
+      - 8086:8086
+      - 8088:8088
+      - 2202:22
+    networks:
+      - frp_network
+    restart: always
+  frp-client1:
+    image: frpc:1.0
+    ports:
+      - 2221:22
+    networks:
+      - frp_network
+    restart: always
+  frp-client2:
+    image: frpc:1.0
+    ports:
+      - 2222:22
+    networks:
+      - frp_network
+    restart: always
+  frp-client3:
+    image: frpc:1.0
+    ports:
+      - 2223:22
+    networks:
+      - frp_network
+    restart: always
+volumes:
+  frp_data:
+networks:
+  frp_network:
+    driver: bridge
