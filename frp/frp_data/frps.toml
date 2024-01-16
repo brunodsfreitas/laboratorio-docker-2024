@@ -41,7 +41,7 @@ transport.maxPoolCount = 5
 # transport.tcpKeepalive = 7200
 
 # transport.tls.force specifies whether to only accept TLS-encrypted connections. By default, the value is false.
-transport.tls.force = false
+tls.force = false
 
 # transport.tls.certFile = "server.crt"
 # transport.tls.keyFile = "server.key"
@@ -49,8 +49,8 @@ transport.tls.force = false
 
 # If you want to support virtual host, you must set the http port for listening (optional)
 # Note: http port and https port can be same with bindPort
-vhostHTTPPort = 8088
-vhostHTTPSPort = 8443
+vhostHTTPPort = 80
+vhostHTTPSPort = 443
 
 # Response header timeout(seconds) for vhost http server, default is 60s
 # vhostHTTPTimeout = 60
@@ -66,7 +66,7 @@ vhostHTTPSPort = 8443
 
 # Configure the web server to enable the dashboard for frps.
 # dashboard is available only if webServer.port is set.
-webServer.addr = "127.0.0.1"
+webServer.addr = "0.0.0.0"
 webServer.port = 7500
 webServer.user = "admin"
 webServer.password = "admin"

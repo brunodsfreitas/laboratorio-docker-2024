@@ -5,22 +5,26 @@ services:
     volumes:
       - .\frp_data:/tmp/data
     ports:
-      - 8443:8443
-      - 8085:8085
-      - 8086:8086
-      - 8088:8088
+      - 7500:7500
+      - 80:80
       - 2202:22
     networks:
       - frp_network
     restart: always
   frp-client1:
+    depends_on: 
+      - frp-server
     image: frpc:1.0
     ports:
       - 2221:22
+      - 7400:7400
+      - 6000:6000
     networks:
       - frp_network
     restart: always
   frp-client2:
+    depends_on: 
+      - frp-server
     image: frpc:1.0
     ports:
       - 2222:22
@@ -28,6 +32,8 @@ services:
       - frp_network
     restart: always
   frp-client3:
+    depends_on: 
+      - frp-server
     image: frpc:1.0
     ports:
       - 2223:22
