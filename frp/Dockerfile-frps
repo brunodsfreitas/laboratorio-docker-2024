@@ -18,11 +18,10 @@ COPY ./startup_s.sh /tmp/startup_s.sh
 
 RUN chmod +x /app/frps
 RUN chmod +x /app/frpc
+RUN chmod +x /tmp/startup_s.sh
 
 WORKDIR /app
-EXPOSE 80
-EXPOSE 22
-EXPOSE 7500
-EXPOSE 7000
+EXPOSE 2000-2020/tcp
+EXPOSE 80 22 7500 7000
 
 CMD ["/tmp/startup_s.sh"]

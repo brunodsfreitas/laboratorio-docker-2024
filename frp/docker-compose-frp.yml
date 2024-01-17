@@ -1,42 +1,21 @@
 services:
 #https://github.com/fatedier/frp#accessing-internal-web-services-with-custom-domains-in-lan
-  frp-server:
+  local.frp.server:
     image: frps:1.0
-    volumes:
-      - .\frp_data:/tmp/data
     ports:
       - 7500:7500
-      - 80:80
+      - "2000-2020:2000-2020/tcp"
       - 2202:22
     networks:
       - frp_network
     restart: always
-  frp-client1:
+  frp-client:
     depends_on: 
-      - frp-server
+      - local.frp.server
     image: frpc:1.0
     ports:
-      - 2221:22
-      - 7400:7400
-      - 6000:6000
-    networks:
-      - frp_network
-    restart: always
-  frp-client2:
-    depends_on: 
-      - frp-server
-    image: frpc:1.0
-    ports:
-      - 2222:22
-    networks:
-      - frp_network
-    restart: always
-  frp-client3:
-    depends_on: 
-      - frp-server
-    image: frpc:1.0
-    ports:
-      - 2223:22
+      - 0:22
+      - 0:7400
     networks:
       - frp_network
     restart: always
@@ -45,3 +24,5 @@ volumes:
 networks:
   frp_network:
     driver: bridge
+
+# docker compose -f docker-compose-frp.yml up --scale frp-client=5

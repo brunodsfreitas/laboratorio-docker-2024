@@ -1,10 +1,23 @@
-serverAddr = "frp-server"
+serverAddr = "local.frp.server"
 serverPort = 7000
 loginFailExit = false
+auth.method = "token"
+auth.token = "0101666"
+webServer.addr = "0.0.0.0"
+webServer.port = 7400
+webServer.user = "admin"
+webServer.password = "admin"
 
 [[proxies]]
-name = "test-tcp"
+name = "ssh-{{ .Envs.HN_ }}"
 type = "tcp"
 localIP = "127.0.0.1"
 localPort = 22
-remotePort = 6000
+remotePort = 0
+
+[[proxies]]
+name = "http-device-admin-{{ .Envs.HN_ }}"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 7400
+remotePort = 0
