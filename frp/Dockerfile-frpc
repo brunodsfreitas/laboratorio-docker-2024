@@ -24,3 +24,4 @@ WORKDIR /app
 EXPOSE 22 7400 6000
 
 CMD ["/tmp/startup_c.sh"]
+#CMD ["tail -f /dev/null"]

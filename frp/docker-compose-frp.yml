@@ -1,15 +1,20 @@
 services:
-#https://github.com/fatedier/frp#accessing-internal-web-services-with-custom-domains-in-lan
   local.frp.server:
+    build:
+      context: .
+      dockerfile: Dockerfile-frps
     image: frps:1.0
     ports:
       - 7500:7500
       - "2000-2020:2000-2020/tcp"
-      - 2202:22
+      - 0:22
     networks:
       - frp_network
     restart: always
-  frp-client:
+  local.frp.client:
+    build:
+      context: .
+      dockerfile: Dockerfile-frpc
     depends_on: 
       - local.frp.server
     image: frpc:1.0
@@ -25,4 +30,5 @@ networks:
   frp_network:
     driver: bridge
 
-# docker compose -f docker-compose-frp.yml up --scale frp-client=5
+# docker compose -f docker-compose-frp.yml up --scale frp-client=5 --build
+# https://github.com/fatedier/frp
