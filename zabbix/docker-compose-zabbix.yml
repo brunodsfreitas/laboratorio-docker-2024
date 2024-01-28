@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  # Banco de Dados
+  zabbix-db:
+    image: postgres:latest
+    container_name: zabbix-db
+    environment:
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+    volumes:
+      - ./data_db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Frontend (Web)
+  zabbix-frontend:
+    image: zabbix/zabbix-web-nginx-pgsql:latest
+    container_name: zabbix-frontend
+    depends_on:
+      - zabbix-db
+    ports:
+      - "80:8080"
+      - "443:443"
+    environment:
+      DB_SERVER_HOST: zabbix-db
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+      ZBX_SERVER_NAME: zabbix-server
+      ZBX_SERVER_HOST: zabbix-server
+
+  # Backend (Server)
+  zabbix-server:
+    image: zabbix/zabbix-server-pgsql:latest
+    container_name: zabbix-server
+    depends_on:
+      - zabbix-db
+    environment:
+      DB_SERVER_HOST: zabbix-db
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+      ZBX_SERVER_NAME: zabbix-server
+    volumes:
+      - ./data_zabbix_server:/etc/zabbix
+#      ZBX_LOGFILE: /etc/zabbix/zabbix_server.log
+
+  # Agente (Exemplo - Substitua as configurações conforme necessário)
+  zabbix-agent:
+    build:
+      context: .
+      dockerfile: zabbix-agent.dockerfile
+    image: zabbix/zabbix-agent:latest
+    container_name: zabbix-agent
+    environment:
+      ZBX_SERVER_HOST: zabbix-server
+#    volumes:
+#      - ./data_zabbix_agent:/etc/zabbix
+#      ZBX_LOGFILE: /etc/zabbix/zabbix_server.log
+    ports:
+      - "10050:10050"
+      - "10053:10053"
