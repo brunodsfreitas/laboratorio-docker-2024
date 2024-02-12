@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<status>
+<version>1.25</version>
+<runtime>0000-00-00 00:05:57</runtime>
+<systime>2018-03-22 22:28:19</systime>
+<buildtime>Oct 10 2020 10:45:08</buildtime>
+<cpuusage>54</cpuusage>
+<cpu_junction_temperature>-1</cpu_junction_temperature>
+<memoryfree>229144</memoryfree>
+<memorytotal>254460</memorytotal>
+<net_packet_sent>334</net_packet_sent>
+<net_packet_dropped>0</net_packet_dropped>
+<lan_dhcp>
+<enable>0</enable>
+</lan_dhcp>
+<aisamplerate>48000</aisamplerate>
+<aitick>16470</aitick>
+<g4>
+<dev_exist>0</dev_exist>
+</g4>
+<wifi>
+<dev_exist>1</dev_exist>
+<enable>1</enable>
+<mac>00:AA:00:AA:00:AA</mac>
+<ap_mode>1</ap_mode>
+<ssid>MySSID</ssid>
+<ip>10.10.20.1</ip>
+</wifi>
+<vi id='0'>
+<framerate>18</framerate>
+<int_cnt>0</int_cnt>
+<lost_int>2</lost_int>
+<width>1920</width>
+<height>1080</height>
+<interlaced>0</interlaced>
+<venc id='0'>
+<left_pics>0</left_pics>
+<left_stream_bytes>0</left_stream_bytes>
+<left_stream_frames>0</left_stream_frames>
+<packs>0</packs>
+<enable>1</enable>
+<no_use>0</no_use>
+<codec>96</codec>
+<width>1280</width>
+<height>720</height>
+<framerate>30</framerate>
+<bitrate>1024</bitrate>
+<ts_url0>http://10.10.30.1/mfile0.ts</ts_url0>
+<hls_url0>http://10.10.30.1/main.m3u8</hls_url0>
+</venc>
+<venc id='1'>
+<left_pics>0</left_pics>
+<left_stream_bytes>0</left_stream_bytes>
+<left_stream_frames>0</left_stream_frames>
+<packs>0</packs>
+<enable>1</enable>
+<no_use>0</no_use>
+<codec>96</codec>
+<width>640</width>
+<height>360</height>
+<framerate>15</framerate>
+<bitrate>512</bitrate>
+<ts_url0>http://10.10.30.1/substream.ts</ts_url0>
+<hls_url0>http://10.10.30.1/substream.m3u8</hls_url0>
+</venc>
+<venc id='2'>
+<left_pics>0</left_pics>
+<left_stream_bytes>0</left_stream_bytes>
+<left_stream_frames>0</left_stream_frames>
+<packs>0</packs>
+<enable>1</enable>
+<no_use>1</no_use>
+<codec>96</codec>
+<width>640</width>
+<height>360</height>
+<framerate>30</framerate>
+<bitrate>1800</bitrate>
+<jpg_url0>http://10.10.30.1/2.jpg</jpg_url0>
+<mjpg_url0>http://10.10.30.1/2.mjpg</mjpg_url0>
+</venc>
+<venc id='3'>
+<left_pics>0</left_pics>
+<left_stream_bytes>0</left_stream_bytes>
+<left_stream_frames>0</left_stream_frames>
+<packs>0</packs>
+<enable>1</enable>
+<no_use>1</no_use>
+<codec>96</codec>
+<width>640</width>
+<height>360</height>
+<framerate>30</framerate>
+<bitrate>1800</bitrate>
+<jpg_url0>http://10.10.30.1/3.jpg</jpg_url0>
+<mjpg_url0>http://10.10.30.1/3.mjpg</mjpg_url0>
+</venc>
+</vi>
+<user>
+<ts0>0</ts0>
+<flv0>0</flv0>
+<pri0>0</pri0>
+<web>2</web>
+<rtsp>0</rtsp>
+</user>
+</status>

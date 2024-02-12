@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sys>
+<ip>172.20.201.31</ip>
+<netmask>255.255.255.0</netmask>
+<gateway>172.20.201.1</gateway>
+<mac>00:13:14:01:88:8B</mac>
+<dhcp_enable>0</dhcp_enable>
+<g4_dev_exist>0</g4_dev_exist>
+<wifi_dev_exist>1</wifi_dev_exist>
+<wifi_enable>1</wifi_enable>
+<wifi_ap_mode>1</wifi_ap_mode>
+<wifi_hostap_essid>Vlab-Ap</wifi_hostap_essid>
+<wifi_hostap_psk>eventialswf$!1</wifi_hostap_psk>
+<wifi_hostap_channel>6</wifi_hostap_channel>
+<wifi id="0">
+<wifi_essid>Vlab-0000</wifi_essid>
+<wifi_psk>eventialswf$!1</wifi_psk>
+<wifi_ip>172.20.200.31</wifi_ip>
+<wifi_netmask>255.255.255.0</wifi_netmask>
+<wifi_gateway>172.20.200.1</wifi_gateway>
+<wifi_dhcp_enable>0</wifi_dhcp_enable>
+</wifi>
+<wifi id="1">
+<wifi_essid>\n</wifi_essid>
+<wifi_psk>\n</wifi_psk>
+<wifi_ip>192.168.0.168</wifi_ip>
+<wifi_netmask>255.255.255.0</wifi_netmask>
+<wifi_gateway>192.168.0.1</wifi_gateway>
+<wifi_dhcp_enable>0</wifi_dhcp_enable>
+</wifi>
+<wifi id="2">
+<wifi_essid>\n</wifi_essid>
+<wifi_psk>\n</wifi_psk>
+<wifi_ip>192.168.0.168</wifi_ip>
+<wifi_netmask>255.255.255.0</wifi_netmask>
+<wifi_gateway>192.168.0.1</wifi_gateway>
+<wifi_dhcp_enable>0</wifi_dhcp_enable>
+</wifi>
+<dns0>8.8.8.8</dns0>
+<dns1>8.8.4.4</dns1>
+<http_port>8100</http_port>
+<rtsp_port>8554</rtsp_port>
+<rtsp_g711>0</rtsp_g711>
+<rtsp_g711_8k>0</rtsp_g711_8k>
+<rtsp_g711_mu>0</rtsp_g711_mu>
+<audio_left_right>0</audio_left_right>
+<ts_over_rtsp>0</ts_over_rtsp>
+<rtp_multicast>0</rtp_multicast>
+<udp_ttl>64</udp_ttl>
+<udp_sock_buf_size>20971520</udp_sock_buf_size>
+<html_password>vlabenc$!1</html_password>
+<hostname>encoder</hostname>
+<language>english</language>
+</sys>
