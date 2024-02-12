@@ -1,0 +1,17 @@
+---
+- name: Configuração do servidor web
+  hosts: webservers
+  vars:
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+    ansible_user: root
+    ansible_ssh_pass: root#123
+  tasks:
+    - name: Instalar o Apache
+      package:
+        name: apache2
+        state: present
+    - name: Iniciar e habilitar o serviço Apache
+      service:
+        name: apache2
+        state: started
+        enabled: yes

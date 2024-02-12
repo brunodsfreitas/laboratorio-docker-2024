@@ -1,0 +1,30 @@
+---
+- name: Transferir e executar script.sh no servidor remoto
+  hosts: webservers
+  vars:
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+    ansible_user: root
+    ansible_ssh_pass: root#123
+    script_name: show_hostname.sh
+    remote_path: /tmp
+    output_file: /tmp/hostname.log
+  tasks:
+    - name: Transferir arquivo script.sh para o servidor remoto
+      copy:
+        src: ./show_hostname.sh
+        dest: "{{ remote_path }}/{{ script_name }}"
+        mode: '0755'  # Garante permissões de execução no script no servidor remoto
+
+    - name: Executar script.sh no servidor remoto
+      shell: "{{ remote_path }}/{{ script_name }} > {{ output_file }} 2>&1"
+      ignore_errors: yes
+    
+    - name: Verificar se o arquivo de saída existe
+      ansible.builtin.stat:
+        path: "{{ output_file }}"
+      register: output_file_stat
+    
+    - name: Exibir saída do script
+      command: cat "{{ output_file }}"
+      register: output_content
+      when: output_file_stat.stat.exists

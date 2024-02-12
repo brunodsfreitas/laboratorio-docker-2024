@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  ansible-server:
+    image: lab-ansible-server:latest
+    volumes:
+      - ./ansible_playbooks:/ansible_playbooks
+      - ./ansible:/ansible
+    networks:
+      ansible_net:
+        ipv4_address: 192.168.90.100
+    command: "tail -f /dev/null"
+
+  agent-client:
+    image: lab-ansible-agent:latest
+    volumes:
+      - ./agent_test:/agent_test
+    networks:
+      ansible_net:
+        ipv4_address: 192.168.90.10
+
+networks:
+  ansible_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.90.0/25
