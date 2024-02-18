@@ -1,4 +1,5 @@
 *.code-workspace
 wordpress/db_data
-wordpress/wordpress_data
+wordpress/wordpress_data*
 terraform/.terraform*
+*.7z
